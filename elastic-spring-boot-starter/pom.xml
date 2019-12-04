@@ -8,8 +8,8 @@
 		<version>1.0.0-RELEASE</version>
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
-	<artifactId>config-spring-boot-starter</artifactId>
-	<name>config-spring-boot-starter</name>
+	<artifactId>elastic-spring-boot-starter</artifactId>
+	<name>elastic-spring-boot-starter</name>
 	<packaging>jar</packaging>
 	
 	<properties>
@@ -59,7 +59,7 @@
 		
 		<dependency>
 			<groupId>com.application.base</groupId>
-			<artifactId>base-config</artifactId>
+			<artifactId>base-elastic</artifactId>
 			<version>${base-xxx.version}</version>
 		</dependency>
 		<dependency>
@@ -190,5 +190,5 @@
 			</plugins>
 		</pluginManagement>
 	</build>
-	
+
 </project>
