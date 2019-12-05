@@ -5,6 +5,8 @@ import com.application.boot.config.common.GenericPool;
 import com.application.boot.config.zookeeper.ZooKeeperConfigProperties;
 import com.application.boot.test.BasicStartTest;
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.annotation.Resource;
@@ -15,6 +17,8 @@ import javax.annotation.Resource;
  * @DESC:
  **/
 public class ZooKeeperStartTest extends BasicStartTest {
+	
+	private Logger logger = LoggerFactory.getLogger(getClass());
 	
 	@Resource
 	private ZooKeeperConfigProperties configProperties;
@@ -30,6 +34,7 @@ public class ZooKeeperStartTest extends BasicStartTest {
 	
 	@Test
 	public void testzk() {
+		logger.info("测试 zookeeper 开始了!");
 		for (int i = 0; i < 500 ; i++) {
 			try {
 				String node = "/super/testNode"+i;
@@ -47,5 +52,6 @@ public class ZooKeeperStartTest extends BasicStartTest {
 				System.out.println("获取配置信息异常!");
 			}
 		}
+		logger.info("测试 zookeeper 结束了!");
 	}
 }

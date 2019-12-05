@@ -4,7 +4,6 @@ import com.application.base.config.zookeeper.config.ZooKeeperConfig;
 import com.application.base.config.zookeeper.curator.factory.ZooKeeperSimpleSessionFactory;
 import com.application.base.config.zookeeper.curator.lock.ZkDelegateDistributedLock;
 import com.application.base.config.zookeeper.pool.ZooKeeperOperPool;
-import com.application.base.utils.json.JsonConvertUtils;
 import com.application.boot.config.common.GenericPool;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -64,7 +63,7 @@ public class ZooKeeperAutoConfiguration {
 	 * @return
 	 */
 	private ZooKeeperSimpleSessionFactory getZkSessionInstance(){
-		logger.info("zookeeper init infos:{}", JsonConvertUtils.toJson(zooKeeperConfig));
+		logger.info("zookeeper init infos:{}", zooKeeperConfig.getConnect().getStrings());
 		ZooKeeperConfig instanceConfig = new ZooKeeperConfig();
 		instanceConfig.setNameSpace(zooKeeperConfig.getName().getSpace());
 		instanceConfig.setSessionTimeoutMs(zooKeeperConfig.getSession().getTimeoutms());

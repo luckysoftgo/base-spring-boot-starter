@@ -12,6 +12,8 @@ import com.application.boot.elastic.ElasticSearchConfigProperties;
 import com.application.boot.test.BasicStartTest;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -26,6 +28,8 @@ import java.util.Map;
  * @DESC: es 测试
  **/
 public class ElasticStartTest extends BasicStartTest {
+	
+	private Logger logger = LoggerFactory.getLogger(getClass());
 	
 	@Autowired
 	private ElasticSearchConfigProperties elasticSearchConfig;
@@ -90,6 +94,7 @@ public class ElasticStartTest extends BasicStartTest {
 	
 	@Test
 	public void restClient(){
+		logger.info("采用 resclient 服务放数据 start !");
 		for (int i = 0; i <500 ; i++) {
 			ElasticData data = new ElasticData();
 			data.setIndex("hahaha");
@@ -104,12 +109,14 @@ public class ElasticStartTest extends BasicStartTest {
 			data.setMapFlag(false);
 			data.setData(JsonConvertUtils.toJson(info));
 			boolean flag = restClient.getElasticSession().addEsData(data);
-			System.out.printf("index="+i+",flag="+flag);
+			System.out.println("index="+i+",flag="+flag);
 		}
+		logger.info("采用 resclient 服务放数据 end !");
 	}
 	
 	@Test
 	public void transport(){
+		logger.info("采用 transport 服务放数据 start !");
 		try {
 			for (int i = 500; i <1000 ; i++) {
 				ElasticData data = new ElasticData();
@@ -125,10 +132,11 @@ public class ElasticStartTest extends BasicStartTest {
 				data.setMapFlag(false);
 				data.setData(JsonConvertUtils.toJson(info));
 				boolean flag = transport.getElasticSession().addEsData(data);
-				System.out.printf("index="+i+",flag="+flag);
+				System.out.println("index="+i+",flag="+flag);
 			}
 		}catch (Exception e){
 			e.printStackTrace();
 		}
+		logger.info("采用 transport 服务放数据 end !");
 	}
 }
