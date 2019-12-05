@@ -1,4 +1,4 @@
-package com.application.boot.common;
+package com.application.boot.elastic.common;
 
 /**
  * @author : 孤狼

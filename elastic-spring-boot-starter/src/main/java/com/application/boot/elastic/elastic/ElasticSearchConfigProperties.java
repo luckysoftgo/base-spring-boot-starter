@@ -1,8 +1,7 @@
-package com.application.boot.elastic;
+package com.application.boot.elastic.elastic;
 
-import com.application.boot.common.GenericPool;
 import org.springframework.boot.context.properties.ConfigurationProperties;
-
+import com.application.boot.elastic.common.GenericPool;
 import java.util.ArrayList;
 import java.util.List;
 

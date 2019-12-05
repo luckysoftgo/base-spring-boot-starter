@@ -1,4 +1,4 @@
-package com.application.boot.elastic;
+package com.application.boot.elastic.elastic;
 
 import com.application.base.elastic.elastic.restclient.config.EsRestClientNodeConfig;
 import com.application.base.elastic.elastic.restclient.config.EsRestClientPoolConfig;
@@ -9,8 +9,8 @@ import com.application.base.elastic.elastic.transport.config.EsTransportPoolConf
 import com.application.base.elastic.elastic.transport.factory.EsTransportSessionPoolFactory;
 import com.application.base.elastic.elastic.transport.pool.ElasticTransportPool;
 import com.application.base.utils.json.JsonConvertUtils;
-import com.application.boot.common.GenericPool;
 import org.apache.commons.lang3.StringUtils;
+import com.application.boot.elastic.common.GenericPool;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;

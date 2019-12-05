@@ -7,8 +7,8 @@ import com.application.base.elastic.elastic.transport.factory.EsTransportSession
 import com.application.base.elastic.elastic.transport.pool.ElasticTransportPool;
 import com.application.base.elastic.entity.ElasticData;
 import com.application.base.utils.json.JsonConvertUtils;
-import com.application.boot.common.GenericPool;
-import com.application.boot.elastic.ElasticSearchConfigProperties;
+import com.application.boot.elastic.common.GenericPool;
+import com.application.boot.elastic.elastic.ElasticSearchConfigProperties;
 import com.application.boot.test.BasicStartTest;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
