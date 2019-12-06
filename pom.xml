@@ -10,14 +10,17 @@
 	<modules>
 		<!--配置启动配置 -->
 		<module>config-spring-boot-starter</module>
-		<!--es启动配置-->
+		<!--es 启动配置-->
 		<module>elastic-spring-boot-starter</module>
-		
+		<!--kylin 启动配置-->
+		<module>kylin-spring-boot-starter</module>
+	
 	</modules>
 	<name>base-spring-boot-starter</name>
     <!-- pom文件定义 -->
-    <packaging>pom</packaging>
+	<packaging>pom</packaging>
 
+	
     <properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
