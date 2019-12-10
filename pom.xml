@@ -14,6 +14,8 @@
 		<module>elastic-spring-boot-starter</module>
 		<!--kylin 启动配置-->
 		<module>kylin-spring-boot-starter</module>
+		<!--缓存操作启动配置-->
+		<module>cache-spring-boot-starter</module>
 	
 	</modules>
 	<name>base-spring-boot-starter</name>

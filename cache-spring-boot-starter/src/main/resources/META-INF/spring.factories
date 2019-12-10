@@ -3,4 +3,5 @@ com.application.boot.cache.redis.simple.RedisSimpleAutoConfiguration,\
 com.application.boot.cache.redis.cluster.RedisClusterAutoConfiguration,\
 com.application.boot.cache.redis.sharded.RedisShardedAutoConfiguration,\
 com.application.boot.cache.redis.sentinel.RedisSentinelAutoConfiguration,\
-com.application.boot.cache.redis.complex.RedisComplexAutoConfiguration
+com.application.boot.cache.redis.complex.RedisComplexAutoConfiguration,\
+com.application.boot.cache.redisson.RedissonAutoConfiguration

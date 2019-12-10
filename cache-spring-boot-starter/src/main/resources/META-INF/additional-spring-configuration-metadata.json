@@ -24,12 +24,48 @@
 	  "sourceType": "com.application.boot.cache.redis.JedisConfigProperties",
 	  "description": "分片模式下的配置,具体在 properties 配置文件中查看."
 	},
-
-    {
+	{
 	  "name": "redis.complex.*",
 	  "type": "java.lang.Integer",
+	  "sourceType": "com.application.boot.cache.redis.JedisConfigProperties",
+	  "description": "哨兵,分片模式下的配置,具体在 properties 配置文件中查看."
+	},
+	{
+	  "name": "redisson.simple.*",
+	  "type": "java.lang.String",
+	  "sourceType": "com.application.boot.cache.redisson.RedissonConfigProperties",
+	  "description": "单机模式下连接信息配置,具体在 properties 配置文件中查看."
+	},
+	{
+	  "name": "redisson.sentinel.*",
+	  "type": "java.lang.String",
+	  "sourceType": "com.application.boot.cache.redisson.RedissonConfigProperties",
+	  "description": "哨兵模式下的配置,具体在 properties 配置文件中查看."
+	},
+	{
+	  "name": "redisson.masterslave.*",
+	  "type": "java.lang.String",
+	  "sourceType": "com.application.boot.cache.redisson.RedissonConfigProperties",
+	  "description": "主从模式下的配置,具体在 properties 配置文件中查看."
+	},
+	{
+	  "name": "redisson.cluster.*",
+	  "type": "java.lang.String",
+	  "sourceType": "com.application.boot.cache.redisson.RedissonConfigProperties",
+	  "description": "集群模式下的配置,具体在 properties 配置文件中查看."
+	},
+	{
+	  "name": "redisson.cloud.*",
+	  "type": "java.lang.Integer",
+	  "sourceType": "com.application.boot.cache.redisson.RedissonConfigProperties",
+	  "description": "云托管模式下的配置,具体在 properties 配置文件中查看."
+	},
+    {
+	  "name": "zookeeper.pool.maxTotal",
+	  "type": "java.lang.Integer",
 	  "sourceType": "com.application.boot.cache.common.GenericPool",
-	  "description": "哨兵,分片模式下的配置,具体在 properties 配置文件中查看8."
+	  "description": "池中最大链接数,默认是8.",
+	  "defaultValue": 8
 	},
 	{
 	  "name": "redis.pool.maxIdle",
