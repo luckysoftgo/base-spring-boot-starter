@@ -88,6 +88,10 @@ public class KylinConfigProperties {
 		 * url 配置信息
 		 */
 		private String url;
+		/**
+		 * url 配置信息
+		 */
+		private String driver;
 		
 		public String getUrl() {
 			return url;
@@ -95,6 +99,14 @@ public class KylinConfigProperties {
 		
 		public void setUrl(String url) {
 			this.url = url;
+		}
+		
+		public String getDriver() {
+			return driver;
+		}
+		
+		public void setDriver(String driver) {
+			this.driver = driver;
 		}
 	}
 	

@@ -62,6 +62,7 @@ public class KylinAutoConfiguration {
 		BeanUtils.copyProperties(pool,jdbcConfig);
 		jdbcConfig.setUserName(kylinConfig.getLogin().getName());
 		jdbcConfig.setUserPass(kylinConfig.getLogin().getPass());
+		jdbcConfig.setKylinDriver(kylinConfig.getJdbc().getDriver());
 		jdbcConfig.setKylinUrl(kylinConfig.getJdbc().getUrl());
 		KylinJdbcOperPool kylinJdbcPool =new KylinJdbcOperPool(jdbcConfig);
 		KylinJdbcSessionFactory jdbcSessionFactory = new KylinJdbcSessionFactory(kylinJdbcPool);
