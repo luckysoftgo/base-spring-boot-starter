@@ -55,6 +55,11 @@
 			<artifactId>base-operapi</artifactId>
 			<version>${base-xxx.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+			<version>2.8.5</version>
+		</dependency>
 		<!--base 封装包 end -->
 	
 	</dependencies>
