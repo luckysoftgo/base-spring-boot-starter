@@ -1,43 +1,64 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    
-    <modelVersion>4.0.0</modelVersion>
-    <groupId>com.application.boot</groupId>
-
-	<artifactId>base-spring-boot-starter</artifactId>
-    <!-- 模块设置. -->
-    <version>1.0.0-RELEASE</version>
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<parent>
+		<artifactId>base-spring-boot-starter</artifactId>
+		<groupId>com.application.boot</groupId>
+		<version>1.0.0-RELEASE</version>
+	</parent>
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>operapi-spirng-boot-starter</artifactId>
+	<version>1.0.0-RELEASE</version>
+	<name>operapi-spirng-boot-starter</name>
+	<packaging>jar</packaging>
 	
-	<modules>
-		<!--配置启动配置 -->
-		<module>config-spring-boot-starter</module>
-		<!--es 启动配置-->
-		<module>elastic-spring-boot-starter</module>
-		<!--kylin 启动配置-->
-		<module>kylin-spring-boot-starter</module>
-		<!--缓存操作启动配置-->
-		<module>cache-spring-boot-starter</module>
-		<!--hive,hbase api操作 -->
-		<module>operapi-spirng-boot-starter</module>
-	
-	</modules>
-	
-	<name>base-spring-boot-starter</name>
-    <!-- pom文件定义 -->
-	<packaging>pom</packaging>
-
-	
-    <properties>
+	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<maven.compiler.encoding>UTF-8</maven.compiler.encoding>
-		<maven.compiler.source>1.8</maven.compiler.source>
-		<maven.compiler.target>1.8</maven.compiler.target>
 		<java.version>1.8</java.version>
 		<maven.test.skip>true</maven.test.skip>
-
+		
+		<spring-boot.version>2.1.6.RELEASE</spring-boot.version>
+		<base-xxx.version>1.0.0-RELEASE</base-xxx.version>
 		<downloadSources>true</downloadSources>
 	</properties>
-
+	
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter</artifactId>
+			<version>${spring-boot.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<version>${spring-boot.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-autoconfigure</artifactId>
+			<version>${spring-boot.version}</version>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-configuration-processor</artifactId>
+			<version>${spring-boot.version}</version>
+			<optional>true</optional>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.application.base</groupId>
+			<artifactId>base-operapi</artifactId>
+			<version>${base-xxx.version}</version>
+		</dependency>
+		<!--base 封装包 end -->
+	
+	</dependencies>
+	
 	<!-- 全局环境变量 -->
 	<profiles>
 		<profile>
@@ -157,5 +178,5 @@
 			</plugins>
 		</pluginManagement>
 	</build>
-    
+
 </project>

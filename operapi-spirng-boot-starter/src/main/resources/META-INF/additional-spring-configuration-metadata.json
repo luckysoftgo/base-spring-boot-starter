@@ -1,0 +1,221 @@
+{
+  "properties": [
+	{
+	  "name": "hbase.hadoopDir",
+	  "type": "java.lang.String",
+	  "sourceType": "com.application.boot.operapi.core.api.hbase.HbaseConfigProperties",
+	  "description": "hadoopDir 的安装地址(D://installer/hadoop-2.7.7) 位置.",
+	  "defaultValue": ""
+	},
+	{
+	  "name": "hbase.rootDir",
+	  "type": "java.lang.String",
+	  "sourceType": "com.application.boot.operapi.core.api.hbase.HbaseConfigProperties",
+	  "description": "类似 hdfs://192.168.10.185:8020/hbase 的地址.",
+	  "defaultValue": ""
+	},
+	{
+	  "name": "hbase.zookeeperQuorum",
+	  "type": "java.lang.String",
+	  "sourceType": "com.application.boot.operapi.core.api.hbase.HbaseConfigProperties",
+	  "description": "zk的安装集群地址,如:192.168.10.125.",
+	  "defaultValue": ""
+	},
+	{
+	  "name": "hbase.zookeeperPort",
+	  "type": "java.lang.String",
+	  "sourceType": "com.application.boot.operapi.core.api.hbase.HbaseConfigProperties",
+	  "description": "zk的访问端口.",
+	  "defaultValue": "2181"
+	},
+	{
+	  "name": "hbase.loginUser",
+	  "type": "java.lang.String",
+	  "sourceType": "com.application.boot.operapi.core.api.hbase.HbaseConfigProperties",
+	  "description": "登录的用户名.",
+	  "defaultValue": ""
+	},
+	{
+	  "name": "hbase.loginPass",
+	  "type": "java.lang.String",
+	  "sourceType": "com.application.boot.operapi.core.api.hbase.HbaseConfigProperties",
+	  "description": "登录的密码.",
+	  "defaultValue": ""
+	},
+	{
+	  "name": "hbase.master",
+	  "type": "java.lang.String",
+	  "sourceType": "com.application.boot.operapi.core.api.hbase.HbaseConfigProperties",
+	  "description": "master主机地址.",
+	  "defaultValue": ""
+	},
+	{
+	  "name": "hbase.pool.maxTotal",
+	  "type": "java.lang.Integer",
+	  "sourceType": "com.application.boot.operapi.common.GenericPool",
+	  "description": "池中最大链接数,默认是8.",
+	  "defaultValue": 8
+	},
+	{
+	  "name": "hbase.pool.maxIdle",
+	  "type": "java.lang.Integer",
+	  "sourceType": "com.application.boot.operapi.common.GenericPool",
+	  "description": "池中最大空闲链接数目,默认是8.",
+	  "defaultValue": 8
+	},
+	{
+	  "name": "hbase.pool.minIdle",
+	  "type": "java.lang.Integer",
+	  "sourceType": "com.application.boot.operapi.common.GenericPool",
+	  "description": "池中最小空闲链接数目,默认为0.",
+	  "defaultValue": 8
+	},
+	{
+	  "name": "hbase.pool.maxWaitMillis",
+	  "type": "java.lang.Integer",
+	  "sourceType": "com.application.boot.operapi.common.GenericPool",
+	  "description": "当链接池资源耗尽时,等待时间,超出抛异常,默认为-1,阻塞.",
+	  "defaultValue": 8
+	},
+	{
+	  "name": "hbase.pool.testOnCreate",
+	  "type": "java.lang.Boolean",
+	  "sourceType": "com.application.boot.operapi.common.GenericPool",
+	  "description": "默认是false,创建一个链接时检测是否链接有效,无效则剔除,并尝试继续获取新链接.",
+	  "defaultValue": false
+	},
+	{
+	  "name": "hbase.pool.testOnBorrow",
+	  "type": "java.lang.Boolean",
+	  "sourceType": "com.application.boot.operapi.common.GenericPool",
+	  "description": "默认是false,借取一个链接时检测是否有效,无效则剔除,并尝试继续获取新链接。.",
+	  "defaultValue": false
+	},
+	{
+	  "name": "hbase.pool.testOnReturn",
+	  "type": "java.lang.Boolean",
+	  "sourceType": "com.application.boot.operapi.common.GenericPool",
+	  "description": "默认为false,归还一个对象时检测是否有效,无效则不放入链接池内。.",
+	  "defaultValue": false
+	},
+	{
+	  "name": "hbase.pool.testWhileIdle",
+	  "type": "java.lang.Boolean",
+	  "sourceType": "com.application.boot.operapi.common.GenericPool",
+	  "description": "默认为false,指明空闲链接是否需要被【空闲链接回收器】【evict方法】检测,检测出链接无效则被移除。.",
+	  "defaultValue": false
+	},
+	{
+	  "name": "hbase.pool.timeBetweenEvictionRunsMillis",
+	  "type": "java.lang.Integer",
+	  "sourceType": "com.application.boot.operapi.common.GenericPool",
+	  "description": "空闲链接回收器运行的周期,单位ms,默认-1,永不执行检测.",
+	  "defaultValue": -1
+	},
+    {
+      "name": "hbase.pool.numTestsPerEvictionRun",
+      "type": "java.lang.Integer",
+	  "sourceType": "com.application.boot.operapi.common.GenericPool",
+	  "description": "空闲链接回收器运行时检查的空闲链接数量,默认是3个.",
+	  "defaultValue": 3
+    },
+	{
+	  "name": "hive.userName",
+	  "type": "java.lang.String",
+	  "sourceType": "com.application.boot.operapi.core.api.hive.HiveConfigProperties",
+	  "description": "hive的登录名称.",
+	  "defaultValue": ""
+	},
+	{
+	  "name": "hive.userPass",
+	  "type": "java.lang.String",
+	  "sourceType": "com.application.boot.operapi.core.api.hive.HiveConfigProperties",
+	  "description": "hive的登录密码.",
+	  "defaultValue": ""
+	},
+	{
+	  "name": "hive.hiveDriver",
+	  "type": "java.lang.String",
+	  "sourceType": "com.application.boot.operapi.core.api.hive.HiveConfigProperties",
+	  "description": "hive的连接的driver的名称.",
+	  "defaultValue": "org.apache.hive.jdbc.HiveDriver"
+	},
+	{
+	  "name": "hive.hiveUrl",
+	  "type": "java.lang.String",
+	  "sourceType": "com.application.boot.operapi.core.api.hive.HiveConfigProperties",
+	  "description": "hive的连接的地址,访问的url.",
+	  "defaultValue": ""
+	},
+	{
+	  "name": "hive.pool.maxTotal",
+	  "type": "java.lang.Integer",
+	  "sourceType": "com.application.boot.operapi.common.GenericPool",
+	  "description": "池中最大链接数,默认是8.",
+	  "defaultValue": 8
+	},
+	{
+	  "name": "hive.pool.maxIdle",
+	  "type": "java.lang.Integer",
+	  "sourceType": "com.application.boot.operapi.common.GenericPool",
+	  "description": "池中最大空闲链接数目,默认是8.",
+	  "defaultValue": 8
+	},
+	{
+	  "name": "hive.pool.minIdle",
+	  "type": "java.lang.Integer",
+	  "sourceType": "com.application.boot.operapi.common.GenericPool",
+	  "description": "池中最小空闲链接数目,默认为0.",
+	  "defaultValue": 8
+	},
+	{
+	  "name": "hive.pool.maxWaitMillis",
+	  "type": "java.lang.Integer",
+	  "sourceType": "com.application.boot.operapi.common.GenericPool",
+	  "description": "当链接池资源耗尽时,等待时间,超出抛异常,默认为-1,阻塞.",
+	  "defaultValue": 8
+	},
+	{
+	  "name": "hive.pool.testOnCreate",
+	  "type": "java.lang.Boolean",
+	  "sourceType": "com.application.boot.operapi.common.GenericPool",
+	  "description": "默认是false,创建一个链接时检测是否链接有效,无效则剔除,并尝试继续获取新链接.",
+	  "defaultValue": false
+	},
+	{
+	  "name": "hive.pool.testOnBorrow",
+	  "type": "java.lang.Boolean",
+	  "sourceType": "com.application.boot.operapi.common.GenericPool",
+	  "description": "默认是false,借取一个链接时检测是否有效,无效则剔除,并尝试继续获取新链接。.",
+	  "defaultValue": false
+	},
+	{
+	  "name": "hive.pool.testOnReturn",
+	  "type": "java.lang.Boolean",
+	  "sourceType": "com.application.boot.operapi.common.GenericPool",
+	  "description": "默认为false,归还一个对象时检测是否有效,无效则不放入链接池内。.",
+	  "defaultValue": false
+	},
+	{
+	  "name": "hive.pool.testWhileIdle",
+	  "type": "java.lang.Boolean",
+	  "sourceType": "com.application.boot.operapi.common.GenericPool",
+	  "description": "默认为false,指明空闲链接是否需要被【空闲链接回收器】【evict方法】检测,检测出链接无效则被移除。.",
+	  "defaultValue": false
+	},
+	{
+	  "name": "hive.pool.timeBetweenEvictionRunsMillis",
+	  "type": "java.lang.Integer",
+	  "sourceType": "com.application.boot.operapi.common.GenericPool",
+	  "description": "空闲链接回收器运行的周期,单位ms,默认-1,永不执行检测.",
+	  "defaultValue": -1
+	},
+	{
+	  "name": "hive.pool.numTestsPerEvictionRun",
+	  "type": "java.lang.Integer",
+	  "sourceType": "com.application.boot.operapi.common.GenericPool",
+	  "description": "空闲链接回收器运行时检查的空闲链接数量,默认是3个.",
+	  "defaultValue": 3
+	}
+  ]
+}

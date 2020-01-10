@@ -1,4 +1,4 @@
-package com.application.boot.kylin.kylin;
+package com.application.boot.kylin.core;
 
 import com.application.boot.kylin.common.GenericPool;
 import org.springframework.boot.context.properties.ConfigurationProperties;

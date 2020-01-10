@@ -2,7 +2,7 @@ package com.application.boot.test.kylin;
 
 import com.application.base.kylin.jdbc.factory.KylinJdbcSessionFactory;
 import com.application.base.kylin.rest.factory.KylinJestSessionFactory;
-import com.application.boot.kylin.kylin.KylinConfigProperties;
+import com.application.boot.kylin.core.KylinConfigProperties;
 import com.application.boot.test.BasicStartTest;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;

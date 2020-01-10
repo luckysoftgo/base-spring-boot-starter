@@ -61,7 +61,7 @@
 	  "description": "云托管模式下的配置,具体在 properties 配置文件中查看."
 	},
     {
-	  "name": "zookeeper.pool.maxTotal",
+	  "name": "redis.pool.maxTotal",
 	  "type": "java.lang.Integer",
 	  "sourceType": "com.application.boot.cache.common.GenericPool",
 	  "description": "池中最大链接数,默认是8.",

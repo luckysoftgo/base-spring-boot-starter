@@ -1,2 +1,2 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-com.application.boot.kylin.kylin.KylinAutoConfiguration
+com.application.boot.kylin.core.KylinAutoConfiguration

@@ -1,0 +1,4 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.application.boot.operapi.core.api.hbase.HbaseAutoConfiguration,\
+com.application.boot.operapi.core.api.hive.HiveAutoConfiguration,\
+com.application.boot.operapi.core.tool.hbase.HbaseToolConfiguration

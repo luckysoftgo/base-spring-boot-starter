@@ -3,70 +3,70 @@
 	{
 	  "name": "elastic.login.auth",
 	  "type": "java.lang.String",
-	  "sourceType": "com.application.boot.elastic.elastic.ElasticSearchConfigProperties",
+	  "sourceType": "com.application.boot.elastic.core.ElasticSearchConfigProperties",
 	  "description": "登录认证的信息,需要配合 x-pack 使用.",
 	  "defaultValue": "elastic:123456"
 	},
 	{
 	  "name": "elastic.cluster.name",
 	  "type": "java.lang.String",
-	  "sourceType": "com.application.boot.elastic.elastic.ElasticSearchConfigProperties",
+	  "sourceType": "com.application.boot.elastic.core.ElasticSearchConfigProperties",
 	  "description": "集群的名称.",
 	  "defaultValue": "elasticsearch"
 	},
 	{
 	  "name": "elastic.transport[n].name",
 	  "type": "java.lang.String",
-	  "sourceType": "com.application.boot.elastic.elastic.ElasticSearchConfigProperties",
+	  "sourceType": "com.application.boot.elastic.core.ElasticSearchConfigProperties",
 	  "description": "transport客户端的名称.",
 	  "defaultValue": "es0"
 	},
 	{
 	  "name": "elastic.transport[n].host",
 	  "type": "java.lang.String",
-	  "sourceType": "com.application.boot.elastic.elastic.ElasticSearchConfigProperties",
+	  "sourceType": "com.application.boot.elastic.core.ElasticSearchConfigProperties",
 	  "description": "transport客户端的主机信息.",
 	  "defaultValue": "127.0.0.1"
 	},
 	{
 	  "name": "elastic.transport[n].port",
 	  "type": "java.lang.Integer",
-	  "sourceType": "com.application.boot.elastic.elastic.ElasticSearchConfigProperties",
+	  "sourceType": "com.application.boot.elastic.core.ElasticSearchConfigProperties",
 	  "description": "transport客户端的端口.",
 	  "defaultValue": 9300
 	},
 	{
 	  "name": "elastic.transport[n].schema",
 	  "type": "java.lang.String",
-	  "sourceType": "com.application.boot.elastic.elastic.ElasticSearchConfigProperties",
+	  "sourceType": "com.application.boot.elastic.core.ElasticSearchConfigProperties",
 	  "description": "transport客户端的访问形式.",
 	  "defaultValue": "http"
 	},
 	{
 	  "name": "elastic.restclient[n].name",
 	  "type": "java.lang.String",
-	  "sourceType": "com.application.boot.elastic.elastic.ElasticSearchConfigProperties",
+	  "sourceType": "com.application.boot.elastic.core.ElasticSearchConfigProperties",
 	  "description": "restclient客户端的名称.",
 	  "defaultValue": "es0"
 	},
 	{
 	  "name": "elastic.restclient[n].host",
 	  "type": "java.lang.String",
-	  "sourceType": "com.application.boot.elastic.elastic.ElasticSearchConfigProperties",
+	  "sourceType": "com.application.boot.elastic.core.ElasticSearchConfigProperties",
 	  "description": "restclient客户端的主机信息.",
 	  "defaultValue": "127.0.0.1"
 	},
 	{
 	  "name": "elastic.restclient[n].port",
 	  "type": "java.lang.Integer",
-	  "sourceType": "com.application.boot.elastic.elastic.ElasticSearchConfigProperties",
+	  "sourceType": "com.application.boot.elastic.core.ElasticSearchConfigProperties",
 	  "description": "restclient客户端的端口.",
 	  "defaultValue": 9200
 	},
 	{
 	  "name": "elastic.restclient[n].schema",
 	  "type": "java.lang.String",
-	  "sourceType": "com.application.boot.elastic.elastic.ElasticSearchConfigProperties",
+	  "sourceType": "com.application.boot.elastic.core.ElasticSearchConfigProperties",
 	  "description": "restclient客户端的访问形式.",
 	  "defaultValue": "http"
 	},

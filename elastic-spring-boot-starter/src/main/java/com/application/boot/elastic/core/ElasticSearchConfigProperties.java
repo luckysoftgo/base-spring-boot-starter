@@ -1,4 +1,4 @@
-package com.application.boot.elastic.elastic;
+package com.application.boot.elastic.core;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import com.application.boot.elastic.common.GenericPool;

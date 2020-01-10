@@ -1,4 +1,4 @@
-package com.application.boot.kylin.kylin;
+package com.application.boot.kylin.core;
 
 import com.application.base.kylin.jdbc.config.KylinJdbcConfig;
 import com.application.base.kylin.jdbc.factory.KylinJdbcSessionFactory;
