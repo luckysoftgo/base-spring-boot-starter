@@ -1,9 +1,7 @@
 package com.application.boot.elastic.core;
 
-import org.springframework.boot.context.properties.ConfigurationProperties;
 import com.application.boot.elastic.common.GenericPool;
-import java.util.ArrayList;
-import java.util.List;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 
 /**
  * @author : 孤狼
@@ -18,23 +16,24 @@ public class ElasticSearchConfigProperties {
 	private GenericPool pool =new GenericPool();
 	
 	/**
-	 * 登录
+	 * 登录信息:
 	 */
-	private ElasticSearchLogin login =new ElasticSearchLogin();
+	private String authLogin;
 	
 	/**
-	 * cluster 信息
+	 * Cluster 名称.
 	 */
-	private ElasticCluster cluster =new ElasticCluster();
-	
+	private String clusterName;
 	/**
-	 * 连接配置
+	 * 节点配置信息
+	 * restcient.serverInfos=192.168.1.1:9200,192.168.1.2:9200,192.168.1.3:9200
 	 */
-	private List<ConnectClientInfo> transport =new ArrayList<>();
+	private String restcientServerInfos="127.0.0.1:9200";
 	/**
-	 * 连接配置
+	 * 节点配置信息
+	 * restcient.serverInfos=192.168.1.1:9300,192.168.1.2:9300,192.168.1.3:9300
 	 */
-	private List<ConnectClientInfo> restclient =new ArrayList<>();
+	private String transportServerInfos="127.0.0.1:9300";
 	
 	public GenericPool getPool() {
 		return pool;
@@ -44,127 +43,35 @@ public class ElasticSearchConfigProperties {
 		this.pool = pool;
 	}
 	
-	public ElasticSearchLogin getLogin() {
-		return login;
+	public String getAuthLogin() {
+		return authLogin;
 	}
 	
-	public void setLogin(ElasticSearchLogin login) {
-		this.login = login;
+	public void setAuthLogin(String authLogin) {
+		this.authLogin = authLogin;
 	}
 	
-	public ElasticCluster getCluster() {
-		return cluster;
+	public String getClusterName() {
+		return clusterName;
 	}
 	
-	public void setCluster(ElasticCluster cluster) {
-		this.cluster = cluster;
+	public void setClusterName(String clusterName) {
+		this.clusterName = clusterName;
 	}
 	
-	public List<ConnectClientInfo> getTransport() {
-		return transport;
+	public String getRestcientServerInfos() {
+		return restcientServerInfos;
 	}
 	
-	public void setTransport(List<ConnectClientInfo> transport) {
-		this.transport = transport;
+	public void setRestcientServerInfos(String restcientServerInfos) {
+		this.restcientServerInfos = restcientServerInfos;
 	}
 	
-	public List<ConnectClientInfo> getRestclient() {
-		return restclient;
+	public String getTransportServerInfos() {
+		return transportServerInfos;
 	}
 	
-	public void setRestclient(List<ConnectClientInfo> restclient) {
-		this.restclient = restclient;
+	public void setTransportServerInfos(String transportServerInfos) {
+		this.transportServerInfos = transportServerInfos;
 	}
-	
-	/**
-	 * Cluster 会话
-	 */
-	public static class ElasticCluster {
-		/**
-		 * 集群名称
-		 */
-		private String name;
-		
-		public String getName() {
-			return name;
-		}
-		
-		public void setName(String name) {
-			this.name = name;
-		}
-	}
-	
-	/**
-	 * 登录信息.
-	 */
-	public static class ElasticSearchLogin {
-		
-		/**
-		 * 登录验证信息:如 elastic:123456
-		 */
-		private String auth;
-		
-		public String getAuth() {
-			return auth;
-		}
-		
-		public void setAuth(String auth) {
-			this.auth = auth;
-		}
-	}
-	
-	/**
-	 * 连接对象
-	 */
-	public static class ConnectClientInfo {
-		/**
-		 * 节点名称
-		 */
-		private String name;
-		/**
-		 * 主机地址
-		 */
-		private String host;
-		/**
-		 * 端口
-		 */
-		private Integer port;
-		/**
-		 * schema
-		 */
-		private String schema;
-		
-		public String getName() {
-			return name;
-		}
-		
-		public void setName(String name) {
-			this.name = name;
-		}
-		
-		public String getHost() {
-			return host;
-		}
-		
-		public void setHost(String host) {
-			this.host = host;
-		}
-		
-		public Integer getPort() {
-			return port;
-		}
-		
-		public void setPort(Integer port) {
-			this.port = port;
-		}
-		
-		public String getSchema() {
-			return schema;
-		}
-		
-		public void setSchema(String schema) {
-			this.schema = schema;
-		}
-	}
-	
 }

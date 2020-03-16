@@ -1,14 +1,15 @@
 package com.application.boot.test.elastic;
 
-import com.application.base.elastic.elastic.transport.config.EsTransportNodeConfig;
 import com.application.base.elastic.elastic.transport.config.EsTransportPoolConfig;
 import com.application.base.elastic.elastic.transport.factory.EsTransportSessionPoolFactory;
 import com.application.base.elastic.elastic.transport.pool.ElasticTransportPool;
 import com.application.base.elastic.entity.ElasticData;
+import com.application.base.elastic.entity.NodeInfo;
 import com.application.base.utils.json.JsonConvertUtils;
 
+import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -23,10 +24,10 @@ public class FactoryTest {
 	}
 	
 	public static void test(){
-		HashSet<EsTransportNodeConfig> esNodes = getTransportNodeInfos();
+		List<NodeInfo> esNodes = getTransportNodeInfos();
 		EsTransportPoolConfig poolConfig = new EsTransportPoolConfig();
 		poolConfig.setClusterName("elasticsearch");
-		poolConfig.setEsNodes(esNodes);
+		poolConfig.setServerNodes(esNodes);
 		ElasticTransportPool transportPool = new ElasticTransportPool(poolConfig);
 		EsTransportSessionPoolFactory transportSessionFactory = new EsTransportSessionPoolFactory(transportPool);
 		for (int i = 0; i <500 ; i++) {
@@ -51,9 +52,9 @@ public class FactoryTest {
 	 * 获得 node 信息
 	 * @return
 	 */
-	private static HashSet<EsTransportNodeConfig> getTransportNodeInfos(){
-		HashSet<EsTransportNodeConfig> nodeConfigs = new HashSet<>();
-		EsTransportNodeConfig nodeConfig = new EsTransportNodeConfig();
+	private static List<NodeInfo> getTransportNodeInfos(){
+		List<NodeInfo> nodeConfigs = new ArrayList<>();
+		NodeInfo nodeConfig = new NodeInfo();
 		nodeConfig.setNodeName("es0");
 		nodeConfig.setNodeHost("192.168.10.216");
 		nodeConfig.setNodePort(9300);

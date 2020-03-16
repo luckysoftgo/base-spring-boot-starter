@@ -1,11 +1,12 @@
 package com.application.boot.test.elastic;
 
 import com.application.base.elastic.elastic.restclient.factory.EsRestClientSessionPoolFactory;
-import com.application.base.elastic.elastic.transport.config.EsTransportNodeConfig;
 import com.application.base.elastic.elastic.transport.config.EsTransportPoolConfig;
 import com.application.base.elastic.elastic.transport.factory.EsTransportSessionPoolFactory;
 import com.application.base.elastic.elastic.transport.pool.ElasticTransportPool;
 import com.application.base.elastic.entity.ElasticData;
+import com.application.base.elastic.entity.NodeInfo;
+import com.application.base.elastic.util.NodeExecUtil;
 import com.application.base.utils.json.JsonConvertUtils;
 import com.application.boot.elastic.common.GenericPool;
 import com.application.boot.elastic.core.ElasticSearchConfigProperties;
@@ -17,8 +18,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 
@@ -42,12 +43,7 @@ public class ElasticStartTest extends BasicStartTest {
 	
 	@Test
 	public void test(){
-		HashSet<EsTransportNodeConfig> esNodes = getTransportNodeInfos();
-		EsTransportPoolConfig poolConfig = new EsTransportPoolConfig();
-		if (StringUtils.isNotBlank(elasticSearchConfig.getCluster().getName())){
-			poolConfig.setClusterName(elasticSearchConfig.getCluster().getName());
-		}
-		poolConfig.setEsNodes(esNodes);
+		EsTransportPoolConfig poolConfig = new EsTransportPoolConfig(elasticSearchConfig.getClusterName(),elasticSearchConfig.getTransportServerInfos(),elasticSearchConfig.getAuthLogin());
 		GenericPool pool = elasticSearchConfig.getPool();
 		BeanUtils.copyProperties(pool,poolConfig);
 		ElasticTransportPool transportPool = new ElasticTransportPool(poolConfig);
@@ -74,23 +70,27 @@ public class ElasticStartTest extends BasicStartTest {
 	 * 获得 node 信息
 	 * @return
 	 */
-	private HashSet<EsTransportNodeConfig> getTransportNodeInfos(){
-		HashSet<EsTransportNodeConfig> nodeConfigs = new HashSet<>();
-		List<ElasticSearchConfigProperties.ConnectClientInfo> transportInfos = elasticSearchConfig.getTransport();
-		if (transportInfos!=null && transportInfos.size()>0){
-			for (ElasticSearchConfigProperties.ConnectClientInfo transportInfo : transportInfos) {
-				EsTransportNodeConfig nodeConfig = new EsTransportNodeConfig();
-				nodeConfig.setNodeName(transportInfo.getName());
-				nodeConfig.setNodeHost(transportInfo.getHost());
-				nodeConfig.setNodePort(transportInfo.getPort());
-				nodeConfig.setNodeSchema(transportInfo.getSchema());
-				nodeConfigs.add(nodeConfig);
-			}
+	private List<NodeInfo> getRestClientNodeInfos(){
+		List<NodeInfo> nodeConfigs = new ArrayList<>();
+		String restcientServerInfos = elasticSearchConfig.getRestcientServerInfos();
+		if (StringUtils.isNotBlank(restcientServerInfos)){
+			nodeConfigs = NodeExecUtil.getNodes(restcientServerInfos);
 		}
 		return nodeConfigs;
 	}
 	
-	
+	/**
+	 * 获得 node 信息
+	 * @return
+	 */
+	private List<NodeInfo> getTransportNodeInfos(){
+		List<NodeInfo> nodeConfigs = new ArrayList<>();
+		String transportServerInfos = elasticSearchConfig.getTransportServerInfos();
+		if (StringUtils.isNotBlank(transportServerInfos)){
+			nodeConfigs = NodeExecUtil.getNodes(transportServerInfos);
+		}
+		return nodeConfigs;
+	}
 	
 	@Test
 	public void restClient(){

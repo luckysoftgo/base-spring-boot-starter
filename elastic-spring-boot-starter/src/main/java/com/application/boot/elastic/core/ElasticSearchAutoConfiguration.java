@@ -1,16 +1,14 @@
 package com.application.boot.elastic.core;
 
-import com.application.base.elastic.elastic.restclient.config.EsRestClientNodeConfig;
 import com.application.base.elastic.elastic.restclient.config.EsRestClientPoolConfig;
 import com.application.base.elastic.elastic.restclient.factory.EsRestClientSessionPoolFactory;
 import com.application.base.elastic.elastic.restclient.pool.ElasticRestClientPool;
-import com.application.base.elastic.elastic.transport.config.EsTransportNodeConfig;
 import com.application.base.elastic.elastic.transport.config.EsTransportPoolConfig;
 import com.application.base.elastic.elastic.transport.factory.EsTransportSessionPoolFactory;
 import com.application.base.elastic.elastic.transport.pool.ElasticTransportPool;
 import com.application.base.utils.json.JsonConvertUtils;
-import org.apache.commons.lang3.StringUtils;
 import com.application.boot.elastic.common.GenericPool;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
@@ -21,9 +19,6 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import java.util.HashSet;
-import java.util.List;
-
 /**
  * @author : 孤狼
  * @NAME: EsRestClientAutoConfiguration
@@ -31,9 +26,9 @@ import java.util.List;
  **/
 // 相当于一个普通的 java 配置类
 @Configuration
-// 当 EsRestClientSessionPoolFactory,EsTransportSessionPoolFactory 在类路径的条件下
+//当EsRestClientSessionPoolFactory,EsTransportSessionPoolFactory 在类路径的条件下
 @ConditionalOnClass({EsTransportSessionPoolFactory.class, EsRestClientSessionPoolFactory.class})
-// 将 application.properties 的相关的属性字段与该类一一对应，并生成 Bean
+//将 application.properties 的相关的属性字段与该类一一对应，并生成 Bean
 @EnableConfigurationProperties(ElasticSearchConfigProperties.class)
 public class ElasticSearchAutoConfiguration {
 	
@@ -51,16 +46,11 @@ public class ElasticSearchAutoConfiguration {
 	@Bean
 	@ConditionalOnMissingBean(EsRestClientSessionPoolFactory.class)
 	public EsRestClientSessionPoolFactory getEsRestClientFactory() {
-		HashSet<EsRestClientNodeConfig> esNodes = getRestClientNodeInfos();
-		if (esNodes.isEmpty()){
+		if (StringUtils.isBlank(elasticSearchConfig.getRestcientServerInfos())){
 			logger.info("elasticSearch get restclient settings is null, properties is :{}", JsonConvertUtils.toJson(elasticSearchConfig));
 			return null;
 		}
-		EsRestClientPoolConfig poolConfig = new EsRestClientPoolConfig();
-		if (StringUtils.isNotBlank(elasticSearchConfig.getCluster().getName())){
-			poolConfig.setClusterName(elasticSearchConfig.getCluster().getName());
-		}
-		poolConfig.setEsNodes(esNodes);
+		EsRestClientPoolConfig poolConfig = new EsRestClientPoolConfig(elasticSearchConfig.getClusterName(),elasticSearchConfig.getRestcientServerInfos(),elasticSearchConfig.getAuthLogin());
 		GenericPool pool = elasticSearchConfig.getPool();
 		BeanUtils.copyProperties(pool,poolConfig);
 		ElasticRestClientPool restClientPool = new ElasticRestClientPool(poolConfig);
@@ -74,16 +64,11 @@ public class ElasticSearchAutoConfiguration {
 	@Bean
 	@ConditionalOnMissingBean(EsTransportSessionPoolFactory.class)
 	public EsTransportSessionPoolFactory getEsTransportFactory() {
-		HashSet<EsTransportNodeConfig> esNodes = getTransportNodeInfos();
-		if (esNodes.isEmpty()){
+		if (StringUtils.isBlank(elasticSearchConfig.getTransportServerInfos())){
 			logger.info("elasticSearch get transport settings is null, properties is :{}", JsonConvertUtils.toJson(elasticSearchConfig));
 			return null;
 		}
-		EsTransportPoolConfig poolConfig = new EsTransportPoolConfig();
-		if (StringUtils.isNotBlank(elasticSearchConfig.getCluster().getName())){
-			poolConfig.setClusterName(elasticSearchConfig.getCluster().getName());
-		}
-		poolConfig.setEsNodes(esNodes);
+		EsTransportPoolConfig poolConfig = new EsTransportPoolConfig(elasticSearchConfig.getClusterName(),elasticSearchConfig.getTransportServerInfos(),elasticSearchConfig.getAuthLogin());
 		GenericPool pool = elasticSearchConfig.getPool();
 		BeanUtils.copyProperties(pool,poolConfig);
 		ElasticTransportPool transportPool = new ElasticTransportPool(poolConfig);
@@ -91,43 +76,4 @@ public class ElasticSearchAutoConfiguration {
 		return transportSessionFactory;
 	}
 	
-	/**
-	 * 获得 node 信息
-	 * @return
-	 */
-	private HashSet<EsRestClientNodeConfig> getRestClientNodeInfos(){
-		HashSet<EsRestClientNodeConfig> nodeConfigs = new HashSet<>();
-		List<ElasticSearchConfigProperties.ConnectClientInfo> restClientInfos = elasticSearchConfig.getRestclient();
-		if (restClientInfos!=null && restClientInfos.size()>0){
-			for (ElasticSearchConfigProperties.ConnectClientInfo restClientInfo : restClientInfos) {
-				EsRestClientNodeConfig nodeConfig = new EsRestClientNodeConfig();
-				nodeConfig.setNodeName(restClientInfo.getName());
-				nodeConfig.setNodeHost(restClientInfo.getHost());
-				nodeConfig.setNodePort(restClientInfo.getPort());
-				nodeConfig.setNodeSchema(restClientInfo.getSchema());
-				nodeConfigs.add(nodeConfig);
-			}
-		}
-		return nodeConfigs;
-	}
-	
-	/**
-	 * 获得 node 信息
-	 * @return
-	 */
-	private HashSet<EsTransportNodeConfig> getTransportNodeInfos(){
-		HashSet<EsTransportNodeConfig> nodeConfigs = new HashSet<>();
-		List<ElasticSearchConfigProperties.ConnectClientInfo> transportInfos = elasticSearchConfig.getTransport();
-		if (transportInfos!=null && transportInfos.size()>0){
-			for (ElasticSearchConfigProperties.ConnectClientInfo transportInfo : transportInfos) {
-				EsTransportNodeConfig nodeConfig = new EsTransportNodeConfig();
-				nodeConfig.setNodeName(transportInfo.getName());
-				nodeConfig.setNodeHost(transportInfo.getHost());
-				nodeConfig.setNodePort(transportInfo.getPort());
-				nodeConfig.setNodeSchema(transportInfo.getSchema());
-				nodeConfigs.add(nodeConfig);
-			}
-		}
-		return nodeConfigs;
-	}
 }
